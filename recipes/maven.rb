@@ -25,11 +25,14 @@ end
 
 remote_file maven_settings do
 source "#{maven_settings_sorece}"
+owner 'pamber'
 not_if {::File.exists?(maven_settings)}
 end
 
 remote_file maven_Settings_Security do
 source maven_Settings_Security_source
+owner 'pamber'
+mode '0600'
 not_if {::File.exists?(maven_Settings_Security)}
 end
 
@@ -40,10 +43,12 @@ directory "#{maven_maveneventspyclient_destination_dir}" do
 
 remote_file maven_maveneventspyclient_destination do
 source maven_maveneventspyclient_sorce
+owner 'root'
 not_if {::File.exists?(maven_maveneventspyclient_destination)}
 end
 
 remote_file maven_eventspyclientconfig_destination do
 source maven_eventspyclientconfig_source
+owner 'pamber'
 not_if {::File.exists?(maven_eventspyclientconfig_destination)}
 end
